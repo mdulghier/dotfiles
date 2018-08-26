@@ -18,6 +18,7 @@ Plug 'justinmk/vim-gtfo'            " Open terminal
 " Appearance
 Plug 'vim-airline/vim-airline'      " Make it pretty
 Plug 'vim-airline/vim-airline-themes'
+Plug 'arcticicestudio/nord-vim'     " Theme
 Plug 'Yggdroot/indentLine'          " Vertical indent indicator lines
 Plug 'junegunn/vim-emoji'           " 
 
@@ -87,11 +88,11 @@ endif
 " color & theme
 syntax on
 set background=dark
-colorscheme gruvbox
+colorscheme nord
+set termguicolors
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 
-if &term =~ '256color'
-  set t_ut=
-endif
 
 " --------------------------------------------------------------------
 " Plugin Settings
@@ -101,7 +102,8 @@ endif
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#whitespace#enabled=0
-let g:airline_theme='ubaryd'
+let g:airline_theme='nord'
+" let g:airline_theme='ubaryd'
 
 " Ctrlspace
 if executable("ag")
@@ -118,7 +120,7 @@ let g:ale_fixers = {
 \   'javascript': ['prettier', 'eslint']
 \}
 let g:ale_sign_error = emoji#for('collision')
-let g:ale_sign_warning = emoji#for('warning')
+let g:ale_sign_warning = emoji#for('eyes')
 
 
 " FZF
@@ -140,6 +142,13 @@ let g:gitgutter_enabled = 0         " turn off by default (because of conflict w
 " Ranger
 let g:ranger_map_keys = 0
 let g:ranger_replace_netrw = 1
+
+" Nord Theme
+let g:nord_italic = 1
+let g:nord_italic_comments = 1
+let g:nord_underline = 1
+let g:nord_cursor_line_number_background = 1
+let g:nord_comment_brightness = 20
 
 " --------------------------------------------------------------------
 " Key Mappings

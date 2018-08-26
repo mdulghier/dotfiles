@@ -129,3 +129,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -f /usr/share/autojump/autojump.sh ] && source /usr/share/autojump/autojump.sh
 
 stty -ixon
+
+export COLORTERM=truecolor
