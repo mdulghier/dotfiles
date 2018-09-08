@@ -76,8 +76,6 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
 
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
@@ -90,8 +88,8 @@ fi
 # some more ls aliases
 
 # Additional alias definitions
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f ~/.aliases ]; then
+    . ~/.aliases
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -125,9 +123,23 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_DEFAULT_COMMAND='rg --files'
 
-[ -f /usr/share/autojump/autojump.sh ] && source /usr/share/autojump/autojump.sh
+# [ -f /usr/share/autojump/autojump.sh ] && source /usr/share/autojump/autojump.sh
+eval "$(fasd --init auto)"
 
 stty -ixon
 
 export COLORTERM=truecolor
+
+if [ -z "$(pgrep ssh-agent)" ]; then
+    rm -rf /tmp/ssh-*
+    eval "$(ssh-agent -s)" > /dev/null
+else
+    export SSH_AGENT_PID=$(pgrep ssh-agent)
+    export SSH_AUTH_SOCK=$(find /tmp/ssh-* -name agent.*)
+fi
+
+if [ "$(ssh-add -l)" == "The agent has no identities." ]; then
+    ssh-add
+fi

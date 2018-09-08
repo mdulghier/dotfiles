@@ -11,6 +11,10 @@ alias ...='cd ../..'
 alias cd.='cd ..'
 alias cd..='cd ..'
 
+alias j='fasd_cd -d'
+alias g='git'
+alias r='ranger'
+
 # fd - cd to selected directory
 fd() {
     local dir
@@ -33,3 +37,4 @@ cf() {
         fi
     fi
 }
+

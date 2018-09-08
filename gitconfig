@@ -1,0 +1,18 @@
+[user]
+	name = Markus Dulghier
+	email = markus@trigo.at
+[alias]
+	a = add
+    br = branch
+    cl = clone
+	cm = commit -m
+    co = checkout
+	last = log -1 HEAD
+    ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    rh = reset --hard
+	s = status
+    st = stash list
+    sa = stash apply
+    ss = stash save
+	unstage = reset HEAD --
