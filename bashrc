@@ -31,9 +31,9 @@ shopt -s checkwinsize
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
+# if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+#     debian_chroot=$(cat /etc/debian_chroot)
+# fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
@@ -106,13 +106,13 @@ fi
 
 export CLICOLOR=1
 
-source ~/.git-completion.sh
+# source ~/.git-completion.sh
 
-PS1='\[\033[37m\]\W\[\033[0m\]$(__git_ps1 " (\[\033[35m\]%s\[\033[0m\])") \$ '
-GIT_PS1_SHOWDIRTYSTATE=1
-GIT_PS1_SHOWSTASHSTATE=1
-GIT_PS1_SHOWUNTRACKEDFILES=1
-GIT_PS1_SHOWUPSTREAM="auto"
+# PS1='\[\033[37m\]\W\[\033[0m\]$(__git_ps1 " (\[\033[35m\]%s\[\033[0m\])") \$ '
+# GIT_PS1_SHOWDIRTYSTATE=1
+# GIT_PS1_SHOWSTASHSTATE=1
+# GIT_PS1_SHOWUNTRACKEDFILES=1
+# GIT_PS1_SHOWUPSTREAM="auto"
 
 export EDITOR=vim
 export LANG=en_US.UTF-8
@@ -122,24 +122,24 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='rg --files'
 
-# [ -f /usr/share/autojump/autojump.sh ] && source /usr/share/autojump/autojump.sh
 eval "$(fasd --init auto)"
 
 stty -ixon
 
 export COLORTERM=truecolor
 
-if [ -z "$(pgrep ssh-agent)" ]; then
-    rm -rf /tmp/ssh-*
-    eval "$(ssh-agent -s)" > /dev/null
-else
-    export SSH_AGENT_PID=$(pgrep ssh-agent)
-    export SSH_AUTH_SOCK=$(find /tmp/ssh-* -name agent.*)
-fi
+# if [ -z "$(pgrep ssh-agent)" ]; then
+#     rm -rf /tmp/ssh-*
+#     eval "$(ssh-agent -s)" > /dev/null
+# else
+#     export SSH_AGENT_PID=$(pgrep ssh-agent)
+#     export SSH_AUTH_SOCK=$(find /tmp/ssh-* -name agent.*)
+# fi
 
-if [ "$(ssh-add -l)" == "The agent has no identities." ]; then
-    ssh-add
-fi
+# if [ "$(ssh-add -l)" == "The agent has no identities." ]; then
+#     ssh-add
+# fi

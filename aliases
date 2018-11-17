@@ -12,6 +12,7 @@ alias cd.='cd ..'
 alias cd..='cd ..'
 
 alias j='fasd_cd -d'
+alias j='fasd_cd -d -i'
 alias g='git'
 alias r='ranger'
 

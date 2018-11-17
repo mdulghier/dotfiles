@@ -6,6 +6,7 @@ call plug#begin('~/.vim/plugged')
 
 " General
 Plug 'francoiscabrol/ranger.vim'    " File Manager
+Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'           " Git integration
 Plug 'junegunn/gv.vim'              " Git commit browser
 Plug 'airblade/vim-gitgutter'       " Git inline change tracking
@@ -165,6 +166,11 @@ let g:nord_underline                     = 1
 let g:nord_cursor_line_number_background = 1
 let g:nord_comment_brightness            = 20
 
+" webdev Icons
+let g:webdevicons_enable = 1
+let g:webdevicons_enable_nerdtree = 1
+let g:webdevicons_conceal_nerdtree_brackets = 1
+
 " --------------------------------------------------------------------
 " Key Mappings
 " --------------------------------------------------------------------
@@ -255,6 +261,8 @@ nnoremap <leader>mw          :SudoWrite<CR>
 " easy-align
 xmap     ga                  <Plug>(EasyAlign)
 nmap     ga                  <Plug>(EasyAlign)
+" NERDtree
+nnoremap <C-m>              :NERDTreeToggle<CR>
 
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
